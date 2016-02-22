@@ -4,7 +4,7 @@ This is not a substitute for the amazing [MediaInfo](https://mediaarea.net/) pro
 It just parses the headers of a matroska file and return a JSON with the info **I** deem important.
 
 ## How to use ##
-Feed a matroska (`mkv`, `mk3d`, `mka`, or `mks`) file.
+Feed a matroska (`mkv`, `mk3d`, `mka`, or `mks`) file.  
 
 ```javascript
 /**
@@ -16,34 +16,34 @@ mkInputFile(mkFile)
 
 ## Output ##
 
-A javascript object is returned.
+A javascript object is returned.  
 
-`name`: {string} The name of the file
-`size`: {integer} The size of the file (in bytes)
-`duration`: {string} The duration of the file (in hh:mm:ss.ms format)
+`name`: {string} The name of the file  
+`size`: {integer} The size of the file (in bytes)  
+`duration`: {string} The duration of the file (in hh:mm:ss.ms format)  
 
-The differents tracks are in the `tracks` object. **Always &ge; 1 track(s)**.
+The differents tracks are in the `tracks` object. **Always &ge; 1 track(s)**.  
 
 ### Tracks ###
-`id`: {integer} The identification number of the track = 1 (!)
-`kind`: {string} The kind of stream (`video`, `audio`, `subtitle`) = 1 (!)
-`name`: {string} The name of the track (default = '')
-`language`: {string} The language of the track using ISO639-2 (default = '')
+`id`: {integer} The identification number of the track = 1 (!)  
+`kind`: {string} The kind of stream (`video`, `audio`, `subtitle`) = 1 (!)  
+`name`: {string} The name of the track (default = '')  
+`language`: {string} The language of the track using ISO639-2 (default = '')  
 
 ##### Videos tracks #####
-= 1 (!) for mkv, mk3d
-= 0 (!) otherwise
-`width`: {integer} The width of the video (in pixels)
-`height`: {integer} The height of the video (in pixels)
+= 1 (!) for mkv, mk3d  
+= 0 (!) otherwise  
+`width`: {integer} The width of the video (in pixels)  
+`height`: {integer} The height of the video (in pixels)  
 
 ##### Audio tracks #####
-&ge; 1 (!) for mka
-= 0 for mks
-&ge; 0 otherwise
+&ge; 1 (!) for mka  
+= 0 for mks  
+&ge; 0 otherwise  
 
 ##### Subtitle tracks #####
-&ge; 1 (!) for mks
-&ge; 0 otherwise
+&ge; 1 (!) for mks  
+&ge; 0 otherwise  
 
 
 ## Example ##
@@ -93,8 +93,8 @@ result = {
 ```
 
 ## Browser support ##
-Anything that supports ECMAScript6.
-Firefox, Chrome, IE 11+...
+Anything that supports ECMAScript6.  
+Firefox, Chrome, IE 11+...  
 I do not intend to support older browsers. Sorry. Too bad.
 
 ## License ##
