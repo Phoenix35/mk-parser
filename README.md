@@ -20,21 +20,21 @@ A javascript object is returned.
 
 `name`: {string} The name of the file  
 `size`: {integer} The size of the file (in bytes)  
-`duration`: {string} The duration of the file (in hh:mm:ss.ms format)  
+`duration`: {string} The duration of the file (in nanoseconds)  
 
 The differents tracks are in the `tracks` object. **Always &ge; 1 track(s)**.  
 
 ### Tracks ###
 `id`: {integer} The identification number of the track = 1 (!)  
-`kind`: {string} The kind of stream (`video`, `audio`, `subtitle`) = 1 (!)  
+`type`: {string} The type of stream (`video`, `audio`, `subtitle`) = 1 (!)  
 `name`: {string} The name of the track (default = '')  
 `language`: {string} The language of the track using ISO639-2 (default = '')  
 
 ##### Videos tracks #####
 = 1 (!) for mkv, mk3d  
 = 0 (!) otherwise  
-`width`: {integer} The width of the video (in pixels)  
-`height`: {integer} The height of the video (in pixels)  
+`width`: {integer} The width of the video  
+`height`: {integer} The height of the video  
 
 ##### Audio tracks #####
 &ge; 1 (!) for mka  
@@ -54,17 +54,18 @@ If you didn't understand the crap above, here is a concrete, human-friendly, exa
 
 ```javascript
 // on a dragdrop event for example
-let result = mkInputFile(e.dataTransfer.files[0]);
+let result = mk.inputFile(e.dataTransfer.files[0]);
 
 // after processing, this should be your output
 result = {
   name: 'Psycho Pass 2 - 01 vostfr BD [x264_AC3][HI10p][1920x1080].mkv',
   size: 857381271, // equals to 818 MiB
-  duration: '00:22:21.760',
-  tracks: {
+  UID: <UInt8Array> 0x94858110C7CFC0BBA60A8EBD4DDEBBC0
+  duration: 1341760000000, // => 00:22:21.760
+  tracks: [
     {
       id: 1,
-      kind: 'video',
+      type: 'video',
       name: '',
       language: 'jpn',
       width: 1920,
@@ -72,23 +73,23 @@ result = {
     },
     {
       id: 2,
-      kind: 'audio',
+      type: 'audio',
       name: '',
       language: 'jpn'
     },
     {
       id: 3,
-      kind: 'subtitle',
+      type: 'subtitle',
       name: 'Piste sans honorifiques',
       language: 'fra'
     },
     {
       id: 4,
-      kind: 'subtitle',
+      type: 'subtitle',
       name: 'Piste avec honorifiques',
       language: 'fra'
     }
-  }
+  ]
 }
 ```
 
